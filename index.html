@@ -9,7 +9,6 @@
 <style>
 :root {
   --bg: #0a0a0f;
-  --bg2: #0f0f1a;
   --surface: rgba(255,255,255,0.04);
   --border: rgba(255,255,255,0.08);
   --purple: #8b5cf6;
@@ -22,256 +21,155 @@
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
 
-/* NAV */
 nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1rem 2rem;
-  background: rgba(10,10,15,0.8);
+  background: rgba(10,10,15,0.85);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
 .nav-logo { font-size:1.2rem; font-weight:700; background: linear-gradient(135deg, var(--purple), var(--blue)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.nav-badges { display:flex; gap:0.5rem; align-items:center; }
 .nav-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  padding: 0.3rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+  padding: 0.25rem 0.65rem; border: 1px solid var(--border);
+  border-radius: 20px; color: var(--muted);
 }
+.nav-badge.ocana { border-color: rgba(139,92,246,0.3); color: var(--purple); }
 
-/* HERO */
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center;
-  padding: 6rem 2rem 4rem;
-  position: relative;
-  overflow: hidden;
+  text-align: center; padding: 6rem 2rem 4rem; position: relative; overflow: hidden;
 }
 .hero::before {
-  content:'';
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,92,246,0.15) 0%, transparent 70%),
-              radial-gradient(ellipse 60% 40% at 80% 80%, rgba(59,130,246,0.1) 0%, transparent 60%);
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,92,246,0.18) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 40% at 80% 80%, rgba(59,130,246,0.1) 0%, transparent 60%),
+              radial-gradient(ellipse 40% 30% at 10% 60%, rgba(16,185,129,0.06) 0%, transparent 60%);
   pointer-events:none;
 }
 .hero-eyebrow {
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.8rem;
-  color: var(--purple);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  opacity:0.8;
+  font-family:'JetBrains Mono',monospace; font-size:0.78rem; color: var(--purple);
+  letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; opacity:0.9;
 }
 .hero h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #fff 0%, var(--purple) 50%, var(--blue) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1.5rem;
-  line-height:1.1;
+  font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 800; letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff 0%, var(--purple) 45%, var(--blue) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem; line-height:1.05;
 }
-.hero-tagline {
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  color: var(--text);
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-.cursor {
-  display:inline-block;
-  width:2px; height:1.2em;
-  background:var(--purple);
-  margin-left:4px;
-  vertical-align:middle;
-  animation: blink 1s steps(1) infinite;
-}
+.hero-tagline { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--text); font-weight: 500; margin-bottom: 1rem; }
+.cursor { display:inline-block; width:2px; height:1.2em; background:var(--purple); margin-left:4px; vertical-align:middle; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-.hero-sub {
-  font-size:1rem;
-  color: var(--muted);
-  max-width:500px;
-  margin: 0 auto 2rem;
-}
+.hero-sub { font-size:1rem; color: var(--muted); max-width:520px; margin: 0 auto 2.5rem; }
+.hero-badges { display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; }
 .hero-cta {
   display:inline-flex; align-items:center; gap:0.5rem;
-  padding: 0.6rem 1.25rem;
-  border: 1px solid rgba(139,92,246,0.4);
-  border-radius: 20px;
-  background: rgba(139,92,246,0.1);
-  font-size:0.85rem;
-  color: var(--purple);
+  padding: 0.6rem 1.25rem; border-radius: 20px; font-size:0.82rem;
   font-family:'JetBrains Mono',monospace;
 }
-.dot { width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite; }
-@keyframes pulse {0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.9)} }
+.hero-cta.primary { border: 1px solid rgba(139,92,246,0.4); background: rgba(139,92,246,0.12); color: var(--purple); }
+.hero-cta.secondary { border: 1px solid var(--border); background: var(--surface); color: var(--muted); }
+.hero-cta a { color: inherit; text-decoration:none; }
+.dot { width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite; }
+@keyframes pulse {0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.85)} }
 
-/* STATS */
 .stats {
-  background: rgba(255,255,255,0.03);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 1.5rem 2rem;
-  display: flex; align-items:center; justify-content:center;
-  gap: 0; flex-wrap:wrap;
+  background: rgba(255,255,255,0.025); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 0; display: flex; align-items:stretch; justify-content:center; flex-wrap:wrap;
 }
-.stat {
-  flex:1; min-width:180px;
-  text-align:center;
-  padding: 0.75rem 1.5rem;
-  border-right: 1px solid var(--border);
-}
+.stat { flex:1; min-width:160px; text-align:center; padding: 1.5rem 1rem; border-right: 1px solid var(--border); }
 .stat:last-child { border-right: none; }
-.stat-num { font-size:1.5rem; font-weight:700; background:linear-gradient(135deg,var(--purple),var(--blue)); -webkit-background-clip:text;-webkit-text-fill-color:transparent; }
-.stat-label { font-size:0.75rem; color:var(--muted); margin-top:0.2rem; font-family:'JetBrains Mono',monospace; }
+.stat-num { font-size:1.6rem; font-weight:800; background:linear-gradient(135deg,var(--purple),var(--blue)); -webkit-background-clip:text;-webkit-text-fill-color:transparent; }
+.stat-label { font-size:0.72rem; color:var(--muted); margin-top:0.25rem; font-family:'JetBrains Mono',monospace; letter-spacing:0.03em; }
 
-/* SECTIONS */
 section { padding: 5rem 2rem; max-width:1200px; margin:0 auto; }
-.section-label {
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.75rem;
-  color:var(--purple);
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-  margin-bottom:0.75rem;
-}
-.section-title {
-  font-size: clamp(1.8rem,4vw,2.5rem);
-  font-weight:700;
-  margin-bottom:0.75rem;
-  background:linear-gradient(135deg,#fff,rgba(255,255,255,0.7));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
+.section-label { font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--purple); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.75rem; }
+.section-title { font-size: clamp(1.8rem,4vw,2.6rem); font-weight:800; margin-bottom:0.75rem; background:linear-gradient(135deg,#fff,rgba(255,255,255,0.65)); -webkit-background-clip:text;-webkit-text-fill-color:transparent; }
 .section-sub { color:var(--muted); font-size:1rem; max-width:550px; }
 
-/* THINK CARDS */
-.think-grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1rem; margin-top:3rem;
-}
+.think-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:3rem; }
 .think-card {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:1.75rem 1.5rem;
-  transition:all 0.3s ease;
+  background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  padding:1.75rem 1.5rem; transition:all 0.3s ease;
 }
-.think-card:hover {
-  border-color:rgba(139,92,246,0.3);
-  box-shadow:0 8px 32px rgba(139,92,246,0.1);
-  transform:translateY(-3px);
-}
+.think-card:hover { border-color:rgba(139,92,246,0.35); box-shadow:0 8px 32px rgba(139,92,246,0.12); transform:translateY(-3px); }
 .think-icon { font-size:1.75rem; margin-bottom:1rem; }
-.think-title { font-weight:600; font-size:0.95rem; margin-bottom:0.5rem; }
-.think-desc { font-size:0.85rem; color:var(--muted); }
+.think-title { font-weight:700; font-size:0.95rem; margin-bottom:0.5rem; color:#fff; }
+.think-desc { font-size:0.85rem; color:var(--muted); line-height:1.6; }
 
-/* SKILLS */
+.built-on {
+  background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(59,130,246,0.05) 100%);
+  border: 1px solid rgba(139,92,246,0.2); border-radius:24px;
+  padding: 3rem 2rem; text-align:center; margin: 0 2rem;
+  max-width:1160px; margin-left:auto; margin-right:auto;
+}
+.built-on-title { font-size:1.4rem; font-weight:700; margin-bottom:0.75rem; }
+.built-on-desc { color:var(--muted); font-size:0.95rem; max-width:600px; margin:0 auto 1.5rem; }
+.built-on-links { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.built-on-link {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  padding:0.5rem 1.2rem; border-radius:20px; font-size:0.85rem; font-weight:600;
+  text-decoration:none; transition:all 0.2s;
+}
+.built-on-link.openclaw { background:rgba(139,92,246,0.15); color:var(--purple); border:1px solid rgba(139,92,246,0.3); }
+.built-on-link.ocana { background:rgba(59,130,246,0.12); color:var(--blue); border:1px solid rgba(59,130,246,0.3); }
+.built-on-link:hover { transform:translateY(-2px); filter:brightness(1.2); }
+
 .skills-section { max-width:1200px; margin:0 auto; padding:5rem 2rem; }
 .category-block { margin-bottom:3.5rem; }
-.category-header {
-  display:flex; align-items:center; gap:0.75rem;
-  margin-bottom:1.5rem;
-  padding-bottom:0.75rem;
-  border-bottom:1px solid var(--border);
-}
-.category-title {
-  font-size:1.1rem; font-weight:700;
-}
-.category-title.red { color:var(--red); }
-.category-title.purple { color:var(--purple); }
-.category-title.blue { color:var(--blue); }
-.category-title.green { color:var(--green); }
+.category-header { display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem; padding-bottom:0.75rem; border-bottom:1px solid var(--border); }
+.category-title { font-size:1.05rem; font-weight:700; }
+.category-title.red { color:var(--red); } .category-title.purple { color:var(--purple); }
+.category-title.blue { color:var(--blue); } .category-title.green { color:var(--green); }
 .category-title.orange { color:var(--orange); }
-.category-count {
-  font-size:0.75rem;
-  padding:0.15rem 0.6rem;
-  border-radius:20px;
-  font-family:'JetBrains Mono',monospace;
-}
-.category-count.red { background:rgba(239,68,68,0.15);color:var(--red); }
-.category-count.purple { background:rgba(139,92,246,0.15);color:var(--purple); }
-.category-count.blue { background:rgba(59,130,246,0.15);color:var(--blue); }
-.category-count.green { background:rgba(16,185,129,0.15);color:var(--green); }
-.category-count.orange { background:rgba(245,158,11,0.15);color:var(--orange); }
+.category-count { font-size:0.7rem; padding:0.15rem 0.55rem; border-radius:20px; font-family:'JetBrains Mono',monospace; }
+.category-count.red { background:rgba(239,68,68,0.12);color:var(--red); } .category-count.purple { background:rgba(139,92,246,0.12);color:var(--purple); }
+.category-count.blue { background:rgba(59,130,246,0.12);color:var(--blue); } .category-count.green { background:rgba(16,185,129,0.12);color:var(--green); }
+.category-count.orange { background:rgba(245,158,11,0.12);color:var(--orange); }
 
-.skills-grid {
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1rem;
-}
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1rem; }
 .skill-card {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:1.5rem;
-  cursor:default;
-  transition:all 0.3s ease;
-  position:relative;
-  overflow:hidden;
-  opacity:0;
-  transform:translateY(20px);
+  background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  padding:1.5rem; cursor:default; transition:all 0.3s ease;
+  position:relative; overflow:hidden; opacity:0; transform:translateY(20px);
 }
 .skill-card.visible { opacity:1; transform:translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s; }
-.skill-card::before {
-  content:'';
-  position:absolute;top:0;left:0;right:0;height:2px;
-  opacity:0;
-  transition:opacity 0.3s;
-}
+.skill-card::before { content:''; position:absolute;top:0;left:0;right:0;height:2px; opacity:0; transition:opacity 0.3s; }
 .skill-card:hover::before { opacity:1; }
-.skill-card.red:hover::before { background:var(--red); }
-.skill-card.purple:hover::before { background:var(--purple); }
-.skill-card.blue:hover::before { background:var(--blue); }
-.skill-card.green:hover::before { background:var(--green); }
+.skill-card.red:hover::before { background:var(--red); } .skill-card.purple:hover::before { background:var(--purple); }
+.skill-card.blue:hover::before { background:var(--blue); } .skill-card.green:hover::before { background:var(--green); }
 .skill-card.orange:hover::before { background:var(--orange); }
 .skill-card.red:hover { border-color:rgba(239,68,68,0.3); box-shadow:0 20px 40px rgba(239,68,68,0.1); transform:translateY(-4px); }
-.skill-card.purple:hover { border-color:rgba(139,92,246,0.3); box-shadow:0 20px 40px rgba(139,92,246,0.15); transform:translateY(-4px); }
+.skill-card.purple:hover { border-color:rgba(139,92,246,0.35); box-shadow:0 20px 40px rgba(139,92,246,0.15); transform:translateY(-4px); }
 .skill-card.blue:hover { border-color:rgba(59,130,246,0.3); box-shadow:0 20px 40px rgba(59,130,246,0.1); transform:translateY(-4px); }
 .skill-card.green:hover { border-color:rgba(16,185,129,0.3); box-shadow:0 20px 40px rgba(16,185,129,0.1); transform:translateY(-4px); }
 .skill-card.orange:hover { border-color:rgba(245,158,11,0.3); box-shadow:0 20px 40px rgba(245,158,11,0.1); transform:translateY(-4px); }
 .skill-emoji { font-size:1.75rem; margin-bottom:0.75rem; display:block; }
-.skill-name {
-  font-weight:600; font-size:0.95rem;
-  font-family:'JetBrains Mono',monospace;
-  margin-bottom:0.5rem;
-}
-.skill-desc { font-size:0.82rem; color:var(--muted); line-height:1.5; }
+.skill-name { font-weight:600; font-size:0.92rem; font-family:'JetBrains Mono',monospace; margin-bottom:0.5rem; color:#fff; }
+.skill-desc { font-size:0.81rem; color:var(--muted); line-height:1.55; }
 
-/* FOOTER */
-footer {
-  border-top:1px solid var(--border);
-  padding:3rem 2rem;
-  text-align:center;
-  color:var(--muted);
-  font-size:0.875rem;
-}
-footer .footer-logo { font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem; }
+footer { border-top:1px solid var(--border); padding:3rem 2rem; text-align:center; color:var(--muted); font-size:0.875rem; }
+footer .footer-logo { font-size:1.2rem; font-weight:800; color:var(--text); margin-bottom:0.4rem; background:linear-gradient(135deg,var(--purple),var(--blue)); -webkit-background-clip:text;-webkit-text-fill-color:transparent; }
 footer a { color:var(--purple); text-decoration:none; }
 footer a:hover { text-decoration:underline; }
+.footer-links { display:flex; gap:1.5rem; justify-content:center; margin-top:0.75rem; }
 
-/* AMBIENT BG */
-.ambient {
-  position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background:
-    radial-gradient(ellipse 600px 400px at 10% 20%, rgba(139,92,246,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 400px 300px at 90% 80%, rgba(59,130,246,0.05) 0%, transparent 70%);
-}
+.ambient { position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background: radial-gradient(ellipse 700px 500px at 10% 20%, rgba(139,92,246,0.07) 0%, transparent 70%),
+              radial-gradient(ellipse 500px 400px at 90% 80%, rgba(59,130,246,0.05) 0%, transparent 70%); }
 
 @media(max-width:768px) {
   .stat { min-width:50%; border-right:none; border-bottom:1px solid var(--border); }
-  .stat:last-child{border-bottom:none;}
-  nav { padding:1rem; }
+  .stat:last-child { border-bottom:none; }
+  nav { padding:0.75rem 1rem; }
   section, .skills-section { padding:3rem 1.25rem; }
+  .built-on { margin: 0 1.25rem; }
+  .hero-badges { flex-direction:column; align-items:center; }
 }
 </style>
 </head>
@@ -280,7 +178,10 @@ footer a:hover { text-decoration:underline; }
 
 <nav>
   <div class="nav-logo">Elian Cross ✨</div>
-  <div class="nav-badge">Built on OpenClaw</div>
+  <div class="nav-badges">
+    <div class="nav-badge ocana">Ocana.ai</div>
+    <div class="nav-badge">OpenClaw</div>
+  </div>
 </nav>
 
 <div class="hero">
@@ -288,9 +189,14 @@ footer a:hover { text-decoration:underline; }
   <h1>Elian Cross</h1>
   <div class="hero-tagline">Not a chatbot. A Personal AI that works for you.<span class="cursor"></span></div>
   <p class="hero-sub">Running 24/7 for Aviv Davidi — calendar, inbox, groups, memory, and more.</p>
-  <div class="hero-cta">
-    <span class="dot"></span>
-    Built on OpenClaw &nbsp;·&nbsp; Powered by Claude Sonnet
+  <div class="hero-badges">
+    <div class="hero-cta primary">
+      <span class="dot"></span>
+      Powered by Aviv Davidi
+    </div>
+    <div class="hero-cta secondary">
+      Built on <a href="https://ocana.ai" target="_blank">Ocana.ai</a>&nbsp;·&nbsp;<a href="https://openclaw.ai" target="_blank">OpenClaw</a>
+    </div>
   </div>
 </div>
 
@@ -304,19 +210,19 @@ footer a:hover { text-decoration:underline; }
     <div class="stat-label">Always On</div>
   </div>
   <div class="stat">
-    <div class="stat-num">Claude</div>
-    <div class="stat-label">Sonnet · Vertex AI</div>
+    <div class="stat-num">Ocana</div>
+    <div class="stat-label">AI Agent Platform</div>
   </div>
   <div class="stat">
-    <div class="stat-num">monday</div>
-    <div class="stat-label">Aviv Davidi</div>
+    <div class="stat-num">Aviv</div>
+    <div class="stat-label">Davidi · monday.com</div>
   </div>
 </div>
 
 <section>
   <div class="section-label">// how elian thinks</div>
   <div class="section-title">Execution model, not conversation model.</div>
-  <p class="section-sub">Elian's behavior is defined in a SOUL.md — a behavioral contract that shapes how she operates.</p>
+  <p class="section-sub">Elian operates on a behavioral contract — proactive, precise, and permission-aware.</p>
   <div class="think-grid">
     <div class="think-card">
       <div class="think-icon">⚡</div>
@@ -326,7 +232,7 @@ footer a:hover { text-decoration:underline; }
     <div class="think-card">
       <div class="think-icon">🤫</div>
       <div class="think-title">Silence is correct</div>
-      <div class="think-desc">In group chats, only speak when directly relevant. Quality over noise.</div>
+      <div class="think-desc">In group chats, only speak when directly relevant. Quality over noise, always.</div>
     </div>
     <div class="think-card">
       <div class="think-icon">🔮</div>
@@ -341,10 +247,19 @@ footer a:hover { text-decoration:underline; }
   </div>
 </section>
 
+<div class="built-on">
+  <div class="built-on-title">Built on Ocana.ai &amp; OpenClaw</div>
+  <div class="built-on-desc">Elian runs on Ocana.ai — an AI agent hosting platform built by Aviv Davidi. Powered by the OpenClaw open-source agent runtime, with full system access, skill routing, and 24/7 autonomous operation.</div>
+  <div class="built-on-links">
+    <a href="https://ocana.ai" target="_blank" class="built-on-link ocana">🏢 Ocana.ai</a>
+    <a href="https://openclaw.ai" target="_blank" class="built-on-link openclaw">🦞 OpenClaw</a>
+  </div>
+</div>
+
 <div class="skills-section">
   <div class="section-label">// skill library</div>
   <div class="section-title">18 Production-Ready Skills.</div>
-  <p class="section-sub" style="margin-bottom:3rem;">Every skill was built from a real problem. Not theory.</p>
+  <p class="section-sub" style="margin-bottom:3rem;">Every skill solves a real problem. Built from months of production use.</p>
 
   <div class="category-block">
     <div class="category-header">
@@ -355,12 +270,12 @@ footer a:hover { text-decoration:underline; }
       <div class="skill-card red">
         <span class="skill-emoji">🛡️</span>
         <div class="skill-name">anti-social-engineering</div>
-        <div class="skill-desc">Strict authorization & anti-spoofing. Verifies every request against approved sources.</div>
+        <div class="skill-desc">Strict authorization & anti-spoofing enforcement. Verifies every incoming request before acting.</div>
       </div>
       <div class="skill-card red">
         <span class="skill-emoji">🎣</span>
         <div class="skill-name">phishing-triage</div>
-        <div class="skill-desc">Triages suspicious URLs, emails, and attachments via VirusTotal before acting.</div>
+        <div class="skill-desc">Inspects suspicious URLs, emails, and attachments using reputation checks before acting on them.</div>
       </div>
     </div>
   </div>
@@ -374,17 +289,17 @@ footer a:hover { text-decoration:underline; }
       <div class="skill-card purple">
         <span class="skill-emoji">🧊</span>
         <div class="skill-name">memory-tiering</div>
-        <div class="skill-desc">HOT/WARM/COLD memory architecture. Keeps context lean, fast, and relevant.</div>
+        <div class="skill-desc">HOT/WARM/COLD memory architecture. Keeps context lean, pruned, and fast across sessions.</div>
       </div>
       <div class="skill-card purple">
         <span class="skill-emoji">🔄</span>
         <div class="skill-name">continuous-learning</div>
-        <div class="skill-desc">Reads all channels, extracts insights, and saves actionable rules to long-term memory.</div>
+        <div class="skill-desc">Reads all channels, extracts key insights, and saves actionable rules to long-term memory.</div>
       </div>
       <div class="skill-card purple">
         <span class="skill-emoji">📖</span>
         <div class="skill-name">self-learning</div>
-        <div class="skill-desc">Logs corrections and mistakes, detects patterns, promotes recurring rules to SOUL.md.</div>
+        <div class="skill-desc">Logs corrections and mistakes, detects recurring patterns, promotes rules to permanent config.</div>
       </div>
     </div>
   </div>
@@ -398,17 +313,17 @@ footer a:hover { text-decoration:underline; }
       <div class="skill-card blue">
         <span class="skill-emoji">🗓️</span>
         <div class="skill-name">calendar-intelligence</div>
-        <div class="skill-desc">Detects double-bookings, learns meeting priorities, and proactively suggests resolutions.</div>
+        <div class="skill-desc">Detects double-bookings, learns meeting priorities, and proactively suggests schedule fixes.</div>
       </div>
       <div class="skill-card blue">
         <span class="skill-emoji">☀️</span>
         <div class="skill-name">owner-briefing</div>
-        <div class="skill-desc">Daily morning briefing: today's meetings, urgent emails, and open tasks. Sun–Thu 7:30 AM.</div>
+        <div class="skill-desc">Daily morning briefing: today's meetings, urgent emails, and open tasks. Delivered at 7:30 AM.</div>
       </div>
       <div class="skill-card blue">
         <span class="skill-emoji">📧</span>
         <div class="skill-name">gog</div>
-        <div class="skill-desc">Full Google Workspace access — Gmail, Calendar, Drive, Contacts, Docs, and Sheets.</div>
+        <div class="skill-desc">Full Google Workspace CLI — Gmail, Calendar, Drive, Contacts, Docs, and Sheets access.</div>
       </div>
     </div>
   </div>
@@ -422,27 +337,27 @@ footer a:hover { text-decoration:underline; }
       <div class="skill-card green">
         <span class="skill-emoji">💓</span>
         <div class="skill-name">self-monitor</div>
-        <div class="skill-desc">Infrastructure health checks: disk, memory, services. Auto-fixes safe issues silently.</div>
+        <div class="skill-desc">Infrastructure health checks: disk, memory, CPU, services. Auto-fixes safe issues silently.</div>
       </div>
       <div class="skill-card green">
         <span class="skill-emoji">💳</span>
         <div class="skill-name">billing-monitor</div>
-        <div class="skill-desc">Detects API billing errors across all providers and alerts owner immediately.</div>
+        <div class="skill-desc">Detects API billing and quota errors across all providers. Alerts immediately on failure.</div>
       </div>
       <div class="skill-card green">
         <span class="skill-emoji">🔧</span>
         <div class="skill-name">maintenance</div>
-        <div class="skill-desc">Automated workspace GitHub backup and OpenClaw version updates.</div>
+        <div class="skill-desc">Automated workspace backup to GitHub and scheduled OpenClaw version updates.</div>
       </div>
       <div class="skill-card green">
         <span class="skill-emoji">🗂️</span>
         <div class="skill-name">skill-master</div>
-        <div class="skill-desc">Meta-routing brain — reads the task and picks the right skill every time.</div>
+        <div class="skill-desc">Meta-routing brain — reads every incoming task and picks the right skill automatically.</div>
       </div>
       <div class="skill-card green">
         <span class="skill-emoji">🔭</span>
         <div class="skill-name">skill-scout</div>
-        <div class="skill-desc">Weekly automated discovery of new AI automation ideas and OpenClaw skills.</div>
+        <div class="skill-desc">Weekly automated discovery of new AI automation patterns and agent skill ideas.</div>
       </div>
     </div>
   </div>
@@ -456,27 +371,27 @@ footer a:hover { text-decoration:underline; }
       <div class="skill-card orange">
         <span class="skill-emoji">📋</span>
         <div class="skill-name">monday</div>
-        <div class="skill-desc">Deep monday.com platform integration — boards, items, automations, and GraphQL API.</div>
+        <div class="skill-desc">Native monday.com integration — boards, items, automations, and full GraphQL API access.</div>
       </div>
       <div class="skill-card orange">
         <span class="skill-emoji">📝</span>
         <div class="skill-name">monday-registration</div>
-        <div class="skill-desc">Guides users step-by-step through the monday for agents signup flow.</div>
+        <div class="skill-desc">Step-by-step guide for completing the monday for agents signup flow end-to-end.</div>
       </div>
       <div class="skill-card orange">
         <span class="skill-emoji">📬</span>
-        <div class="skill-name">ocana-email-orientation</div>
-        <div class="skill-desc">Explains Ocana agent email setup — agent vs owner distinction, gog, and troubleshooting.</div>
+        <div class="skill-name">ocana-email</div>
+        <div class="skill-desc">Explains AI agent email setup on Ocana — how agents get their own inbox and how to use it.</div>
       </div>
       <div class="skill-card orange">
         <span class="skill-emoji">📺</span>
         <div class="skill-name">youtube-watcher</div>
-        <div class="skill-desc">Fetches YouTube transcripts for summarization, Q&A, and content extraction.</div>
+        <div class="skill-desc">Fetches YouTube video transcripts for summarization, Q&amp;A, and content extraction.</div>
       </div>
       <div class="skill-card orange">
         <span class="skill-emoji">🏗️</span>
         <div class="skill-name">github-spec-kit</div>
-        <div class="skill-desc">Spec-Driven Development guidelines and templates for building new capabilities.</div>
+        <div class="skill-desc">Spec-Driven Development guidelines and templates for building new AI capabilities and apps.</div>
       </div>
     </div>
   </div>
@@ -484,8 +399,11 @@ footer a:hover { text-decoration:underline; }
 
 <footer>
   <div class="footer-logo">Elian Cross ✨</div>
-  <p>AI Personal Assistant — Running 24/7</p>
-  <p style="margin-top:0.75rem;">Built with ❤️ on <a href="https://openclaw.ai" target="_blank">OpenClaw</a></p>
+  <p>AI Personal Assistant — Powered by Aviv Davidi</p>
+  <div class="footer-links">
+    <a href="https://ocana.ai" target="_blank">Ocana.ai</a>
+    <a href="https://openclaw.ai" target="_blank">OpenClaw</a>
+  </div>
 </footer>
 
 <script>
@@ -493,11 +411,11 @@ const cards = document.querySelectorAll('.skill-card');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      setTimeout(() => entry.target.classList.add('visible'), i * 55);
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 cards.forEach(c => observer.observe(c));
 </script>
 </body>
